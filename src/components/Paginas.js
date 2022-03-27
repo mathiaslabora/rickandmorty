@@ -13,11 +13,10 @@ const Paginas = ({ prev, next, onPrev, onNext }) => {
 
 
     return (
-        <nav>
+        <nav className='my-3'>
             <ul className='pagination justify-content-center'>
-                {
-                    prev ? (<li className='page-item'>
-                        <button className='page-link' onClick={pageAnterior}>Anterior</button></li>) : null
+                {prev ? (<li className='page-item'>
+                    <button className='page-link' onClick={pageAnterior}>Anterior</button></li>) : null
                 }
                 {
                     next ? (<li className='page-item'>
