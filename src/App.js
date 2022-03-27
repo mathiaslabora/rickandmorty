@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import Barra from "./components/Barra";
+import React, { useState, useEffect } from 'react';
+import Personajes from "./components/Personajes";
+import Paginas from "./components/Paginas";
+
+
 
 function App() {
+  const urlRandM = "https://rickandmortyapi.com/api/character";
+
+  const [personajes, setpersonajes] = useState([]);
+  const [info, setInfo] = useState({});
+  const fPersonajes = (url) => {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        setpersonajes(data.results);
+        setInfo(data.info);
+      })
+      .catch(error => console.log(error))
+  }
+
+  const onPrev = () => {
+    fPersonajes(info.prev)
+  }
+
+  const onNext = () => {
+    fPersonajes(info.next)
+  }
+
+  useEffect(() => {
+    fPersonajes(urlRandM);
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Barra titulo={"Rick and Morty"} />
+
+      <div className="container mt-3">
+        <Paginas prev={info.prev} next={info.next} onPrev={onPrev} onNext={onNext} />
+        <Personajes personajes={personajes} />
+        <Paginas />
+      </div>
+    </>
   );
 }
 
