@@ -7,7 +7,7 @@ export const Episode = ({ espisodes = [] }) => {
                 espisodes.map((item, index) => (
 
                     <div key={index} className='col mb-3'>
-                        <div className='card' style={{minWidth: "200px"}}>
+                        <div className='card' style={{minWidth: "300px"}}>
                             <div className='card-body'>
                                 <h5 className='card-title'>{item.name}</h5>
                                 <hr/>
