@@ -5,7 +5,7 @@ const initialState = {
     cap: [],
 };
 
-export default (state = initialState, action) => {
+/* export default (state = initialState, action) => {
     switch (action.type) {
         case PERSONAJES:
             return {
@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
             return {...state};
         }
 
-    }
+    } */
 
 
 
